@@ -13,9 +13,6 @@ An account consists of a `public key` and a `private key`.
 
 **tldr;** run `create_account.py` in this directory and note down your public and private key. 
 
-## Disclaimer
 [^disclaimer]: As a disclaimer, the opinions expressed are solely my own and do not express the views or opinions of my employer. This is meant to be a short, fun, and somewhat insecure guide to NFTs for beginners in a hackathon setting.
-
-## Extra notes
 
 [^1]: Note that in this tutorial, we care more about speed so we may do potentially unsafe stuff with your `private key`. If you are using real funds, make sure you are using [kmd](https://developer.algorand.org/docs/clis/kmd/) or some other secure way for storing your secrets.
