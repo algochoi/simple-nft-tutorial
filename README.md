@@ -49,7 +49,9 @@ There are many ways of uploading your image, but we will use [NFT.storage](https
 Copy the CID from the site and note it down somewhere as we will use it in the next step!
 
 ## Customize your coin!
-Open `create_nft.py` with your favorite editor, navigate to the top where it says `# Configurable parameters`, and customize your asset by changing the `TOTAL_SUPPLY` (1 means NFT, more than 1 is a custom token), `YOUR_UNIT_NAME`, `YOUR_ASSET_NAME`, and `YOUR_URL`. When entering your URL, the convention is to put the CID prefixed by `ipfs://` [^3]. When you're done, save your editor and run `python3 create_nft.py`. It should take 5~10 seconds to confirm and finalize your transaction on the blockchain [^4]. When the transaction goes through, the Python script should output a link to your new asset! e.g. `Go to Algoexplorer to look at your beautiful asset: https://testnet.algoexplorer.io/asset/your-asset-here`
+Open `create_nft.py` with your favorite editor, navigate to the top where it says `# Configurable parameters`, and customize your asset by changing the `TOTAL_SUPPLY` (1 means NFT, more than 1 is a custom token), `YOUR_UNIT_NAME`, `YOUR_ASSET_NAME`, and `YOUR_CID` [^3]. When you're done, save your editor and run `python3 create_nft.py`. It should take 5~10 seconds to confirm and finalize your transaction on the blockchain [^4]. 
+
+When the transaction goes through, the Python script should output a link to your new asset! e.g. `Go to Algoexplorer to look at your beautiful asset: https://testnet.algoexplorer.io/asset/your-asset-here`
 
 
 You should be able to see your new coin/nft on the blockchain! You can view asset information on Algoexplorer by clicking `Technical Information` and then `Creation Tx`, which should show you details about your shiny coin. You can access an `ipfs` url anytime by copying the CID to the end of `https://ipfs.io/ipfs/`, i.e. `https://ipfs.io/ipfs/YOUR_CID_HERE`. Here's a [dummy example](https://ipfs.io/ipfs/bafkreiey5jxe6ilpf62lnh77tm5ejbbmhbugzjuf6p2v3remlu73ced34q). 
