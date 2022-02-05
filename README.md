@@ -1,4 +1,4 @@
-# A Simple NFT/memecoin Tutorial for Algorand Hackers
+# A Simple NFT/memecoin Tutorial on Algorand
 
 Let's make a simple NFT/memecoin on the Algorand TestNet! We'll use the [Purestake API](https://www.purestake.com/), [NFT Storage](https://nft.storage/#getting-started), and the [Algorand Python SDK](https://github.com/algorand/py-algorand-sdk) to programmatically create some NFTs on the fly. [^disclaimer]
 
