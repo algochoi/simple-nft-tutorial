@@ -36,6 +36,7 @@ For TestNet, we have a bank/faucet that gives you free Algos to test out your pr
 ## Create a Purestake API-Key and save it to your `.env`
 We are going to use an external API to make requests to the blockchain. Sign up for a [free Purestake account](https://developer.purestake.io/). When you log on, you should see your API key (where the greyed out box is in the screenshot below). 
 
+![purestake screenshot](img/purestake-api.png)
 
 Don't expose that to the world either - write it down in your `.env` file in the `PURESTAKE_KEY` field. 
 
