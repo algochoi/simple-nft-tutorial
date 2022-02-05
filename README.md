@@ -28,7 +28,7 @@ If you run `python create_account.py`, it will automatically generate your addre
 > **tl;dr** run `python create_account.py` in this directory and it should generate a `.env` file with your address and secret. **DO NOT** share your secret with anyone. 
 
 ## Fund your address
-For TestNet, we have a bank/faucet that gives you free Algos to test out your program. Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. The funds may take ~10 seconds to settle, but you can check out your funds on the blockchain using [AlgoExplorer](https://testnet.algoexplorer.io/). Enter your `address` in the search bar and confirm that your balances are set to 10. 
+For TestNet, we have a bank/faucet that gives you free Algos to test out your program. Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. The funds may take ~10 seconds to settle, but you can check out your funds on the blockchain using [AlgoExplorer](https://testnet.algoexplorer.io/) when the money is loaded. Enter your `address` in the search bar and confirm that your balances are set to 10. 
 ![algoexplorer screenshot](img/algoexplorer.png)
 
 > **tl;dr** Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. 
@@ -43,7 +43,7 @@ Don't expose that to the world either - write it down in your `.env` file in the
 ![env file screenshot](img/env-file.png)
 
 ## Upload your beautiful image using NFT.storage
-There are many ways of uploading your data or image, but we will use [NFT.storage](https://nft.storage/), which will store your image in decentralized IPFS. This way, the should be able to live for a long time in public storage [^2]. Sign up for a free account, click on `Files`, and upload your beautiful image!
+There are many ways of uploading your data or image, but we will use [NFT.storage](https://nft.storage/), which will store your image in decentralized IPFS. This way, the file should be able to live for a long time in public storage [^2]. Sign up for a free account, click on `Files`, and upload your beautiful image!
 ![nft storage screenshot](img/nftstorage.png)
 
 Copy the CID from the site and note it down somewhere as we will use it in the next step!
