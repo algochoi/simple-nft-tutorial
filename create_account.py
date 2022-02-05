@@ -10,5 +10,7 @@ print("Public key: {}".format(public_key))
 
 with open(".env", "w") as f:
     f.write('ALGORAND_ADDRESS="{}"\n'.format(public_key))
-    f.write('ALGORAND_SECRET="{}"'.format(private_key))
-    f.write('PURESTAKE_KEY=""')
+    f.write('ALGORAND_SECRET="{}"\n'.format(private_key))
+    f.write('PURESTAKE_KEY=""\n')
+    f.write('SECOND_ADDRESS="{}"\n'.format(public_key))
+    f.write('SECOND_SECRET="{}"\n'.format(private_key))
