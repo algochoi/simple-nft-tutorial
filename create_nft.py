@@ -9,7 +9,8 @@ from dotenv import load_dotenv
 TOTAL_SUPPLY = 1  # 1 denotes "NFT", more than 1 denotes a token or coin
 YOUR_UNIT_NAME = "achoo"
 YOUR_ASSET_NAME = "achoocoin"
-YOUR_URL = "ipfs://" # Generally prefixed with ipfs://[your-CID]
+YOUR_CID = ""
+YOUR_URL = "ipfs://"+YOUR_CID # Generally prefixed with ipfs://[your-CID]
 
 
 def create_algod_client():
@@ -53,9 +54,12 @@ def create_asa():
     txid = client.send_transaction(signed_txn)
     print("Waiting for block...")
     resp = transaction.wait_for_confirmation(client, txid, 5)
-    print("Successfully sent transaction with txID: {}".format(txid))
-    print("Response: {}".format(resp))
+
+    # Let's use str.format for python <3.7 compatibility...
+    # print("Successfully sent transaction with txID: {}".format(txid))
+    # print("Response: {}".format(resp))
     print("Your Asset ID: {}".format(resp['asset-index']))
+    print("You can check out your asset on IPFS here: https://ipfs.io/ipfs/{}".format(YOUR_CID))
     print("Go to Algoexplorer to look at your beautiful asset: https://testnet.algoexplorer.io/asset/{}".format(resp['asset-index']))
 
 
