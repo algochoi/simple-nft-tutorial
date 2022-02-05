@@ -20,8 +20,8 @@ pip install -r requirements.txt
 
 ## Create your first [Algorand account](https://developer.algorand.org/docs/get-details/accounts/)
 An account consists of a `public key` and a `private key`. 
-* The `public key` (aka `wallet address`, or `Algorand address`, which is an encoded form of the public key) is like your banking number that people can use to send you money. This is okay to share with your friends.
-* The `private key` (aka `secret`, or sometimes `mnemonic`, which refers to a set of English words that can be translated into a private key) is like your banking PIN. It's probably not a good idea to share your PIN in real life either, so **DO NOT** share your `private key` with anyone![^1]
+* The `public key` (aka `wallet address`, or `Algorand address`, which is an encoded form of the public key) is like your banking number/etransfer/venmo handle that people can use to send you money. This is okay to share with your friends.
+* The `private key` (aka `secret`, or sometimes `mnemonic`, which refers to a set of English words that can be translated into a private key) is like your banking PIN/password. It's probably not a good idea to share your PIN/passwords in real life either, so **DO NOT** share your `private key` with anyone![^1]
 
 If you run `python create_account.py`, it will automatically generate your address and secret in a private `.env` file. Do not share or upload this file anywhere (by default, `.env` is listed in this repo's `.gitignore`). We will also use this file later to put our API keys. Please just run the script once, or else it will overwrite all your secrets.
 
