@@ -1,4 +1,4 @@
-from algosdk import account, mnemonic
+from algosdk import account
 
 private_key, public_key = account.generate_account()
 
