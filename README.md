@@ -1,6 +1,6 @@
 # nft/memecoin Tutorial on Algorand
 
-Let's make a simple NFT/memecoin on the Algorand TestNet! We'll use the [Purestake API](https://www.purestake.com/), [NFT Storage](https://nft.storage/#getting-started), and the [Algorand Python SDK](https://github.com/algorand/py-algorand-sdk) to programmatically create some NFTs on the fly. [^disclaimer]
+Let's make a simple NFT/memecoin on the Algorand TestNet! We'll use the [Purestake API](https://www.purestake.com/), [NFT Storage](https://nft.storage/#getting-started), and the [Algorand Python SDK](https://github.com/algorand/py-algorand-sdk) to programmatically create some coins/nfts/assets. [^disclaimer]
 
 > Tip: If you want to speedrun through this tutorial, just read each heading and the `tl;dr`s at the end of the section.
 
@@ -43,13 +43,13 @@ Don't expose that to the world either - write it down in your `.env` file in the
 ![env file screenshot](img/env-file.png)
 
 ## Upload your beautiful image using NFT.storage
-There are many ways of uploading your image, but we will use [NFT.storage](https://nft.storage/), which will store your image in decentralized IPFS. This way, the should be able to live for a long time in public storage [^2]. Sign up for a free account, click on `Files`, and upload your beautiful image!
+There are many ways of uploading your data or image, but we will use [NFT.storage](https://nft.storage/), which will store your image in decentralized IPFS. This way, the should be able to live for a long time in public storage [^2]. Sign up for a free account, click on `Files`, and upload your beautiful image!
 ![nft storage screenshot](img/nftstorage.png)
 
 Copy the CID from the site and note it down somewhere as we will use it in the next step!
 
 ## Customize your coin!
-Open `create_nft.py` with your favorite editor, navigate to the top where it says `# Configurable parameters`, and customize your asset by changing the `TOTAL_SUPPLY` (1 means NFT, more than 1 is a custom token), `YOUR_UNIT_NAME`, `YOUR_ASSET_NAME`, and `YOUR_CID` [^3]. When you're done, save your editor and run `python3 create_nft.py`. It should take 5~10 seconds to confirm and finalize your transaction on the blockchain [^4]. 
+Open `create_nft.py` with your favorite editor, navigate to the top where it says `# Configurable parameters`, and customize your asset by changing the `TOTAL_SUPPLY` (1 means it is a NFT, more than 1 is a custom token/coin/asset), `YOUR_UNIT_NAME`, `YOUR_ASSET_NAME`, and `YOUR_CID` [^3]. When you're done, save your editor and run `python3 create_nft.py`. It should take 5~10 seconds to confirm and finalize your transaction on the blockchain [^4]. 
 
 When the transaction goes through, the Python script should output a link to your new asset! e.g. `Go to Algoexplorer to look at your beautiful asset: https://testnet.algoexplorer.io/asset/your-asset-here`
 
@@ -57,6 +57,11 @@ When the transaction goes through, the Python script should output a link to you
 You should be able to see your new coin/nft on the blockchain! You can view asset information on Algoexplorer by clicking `Technical Information` and then `Creation Tx`, which should show you details about your shiny coin. You can access an `ipfs` url anytime by copying the CID to the end of `https://ipfs.io/ipfs/`, i.e. `https://ipfs.io/ipfs/YOUR_CID_HERE`. Here's a [dummy example](https://ipfs.io/ipfs/bafkreiey5jxe6ilpf62lnh77tm5ejbbmhbugzjuf6p2v3remlu73ced34q). 
 
 > **tl;dr** Edit `create_nft.py` with your token params and run `python3 create_nft.py`. It should generate two links for you to look at your shiny asset.
+
+## Transferring assets
+Now that you have created your asset, you might want to send it to someone else. To do this, the receiver needs to [opt-in](https://developer.algorand.org/tutorials/asa-python/#part-3-opt-in) to the asset, have a minimum balance of 0.1 Algo (per asset opted-in), and sign with their `private_key` to confirm this. Then, the owner of the asset can [transfer](https://developer.algorand.org/tutorials/asa-python/#part-4-transfer) the asset to the receiver.
+
+todo: add section/script on asset transfers?
 
 ## Additional Resources
 * [JavaScript tutorial using Pinata IPFS](https://developer.algorand.org/solutions/minting-nfts-on-algorand-using-ipfs/)
@@ -69,6 +74,6 @@ You should be able to see your new coin/nft on the blockchain! You can view asse
 
 [^2]: There are certain best practices when using IPFS because it is a decentralized store. If you are very serious about storing your image/data, you should pin the data against a machine that you also own in addition to relying on other machines. 
 
-[^3]: The more technical convention for NFTs, as described by [EIP1155](https://eips.ethereum.org/EIPS/eip-1155) or [ARC-0003](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0003.md), is to have a link to your metadata JSON file here. But I've abstracted that layer away from this tutorial. An NFT is essentially a link to a JSON that contains a link to your data/image/file.
+[^3]: The more technical convention for NFTs, as described by [EIP1155](https://eips.ethereum.org/EIPS/eip-1155) or [ARC-0003](https://github.com/algorandfoundation/ARCs/blob/main/ARCs/arc-0003.md), is to have a link to your metadata JSON file here. But I've abstracted that layer away from this tutorial. A "NFT" is essentially a link to a JSON that contains a link to your data/image/file.
 
 [^4]: On a more technical note, different blockchains have different block times and different finality times. Block time, imo, does not really matter compared to transaction finality times because the user only cares whether their transaction went through or not rather than individual blocks. According to this [source](https://www.dfinitycommunity.com/internet-computer-vs-layer-1-blockchains/#:~:text=Solana%20uses%20%22Optimistic%20Confirmation%22%20that,its%20Proof%20of%20Stake%20consensus.), Ethereum has \~5 minute finality time, Solana is \~13s, Algorand is \~5s, while Avalanche is \~3s.

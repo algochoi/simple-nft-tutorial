@@ -32,6 +32,7 @@ def create_asa():
     # Create client to send requests
     client = create_algod_client()
 
+    # Build a transaction to create the asset
     txn = transaction.AssetConfigTxn(
         sender=address,
         sp=client.suggested_params(),
@@ -49,8 +50,11 @@ def create_asa():
         decimals=0,
     )
 
+    # Sign the transaction with our private key to confirm that this transaction 
+    # was authorized by us.
     signed_txn = txn.sign(private_key=private_key)
 
+    # Send the transaction to the network using Purestake API
     txid = client.send_transaction(signed_txn)
     print("Waiting for block...")
     resp = transaction.wait_for_confirmation(client, txid, 5)
