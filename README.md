@@ -2,17 +2,19 @@
 
 Let's make a simple NFT/memecoin on the Algorand TestNet! We'll use the [Purestake API](https://www.purestake.com/), [NFT Storage](https://nft.storage/#getting-started), and the [Algorand Python SDK](https://github.com/algorand/py-algorand-sdk) to programmatically create some NFTs on the fly. [^disclaimer]
 
+> Tip: If you want to speedrun through this tutorial, just read each heading and the `tl;dr`s at the end of the section.
+
 ## Pre-requisites
-* You should hopefully know how to open the terminal. On MacOS or Ubuntu (any Linux-based OS), just open up your terminal. If you are on Windows, I recommend you install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install), and you will be able to run a Ubuntu terminal on your machine. 
+* You should hopefully know how to open the terminal and use a code editor. On MacOS or Ubuntu (any Linux-based OS), just open up your terminal. If you are on Windows, I recommend you install [WSL](https://docs.microsoft.com/en-us/windows/wsl/install), and you will be able to run a Ubuntu terminal on your machine. 
 * Your machine should have `git` and `python` installed. 
 
 ## Clone this repo 
-Open up your terminal and do the following:
+Open up your terminal and paste the following commands:
 ```
 git clone [this-repo-link]
 cd [this repo]
-python -m venv .venv
-source .venv/bin/activate
+python -m venv .venv # optional
+source .venv/bin/activate # optional
 pip install -r requirements.txt
 ```
 
@@ -21,18 +23,23 @@ An account consists of a `public key` and a `private key`.
 * The `public key` (aka `wallet address`, or `Algorand address`, which is an encoded form of the public key) is like your banking number that people can use to send you money. This is okay to share with your friends.
 * The `private key` (aka `secret`, or sometimes `mnemonic`, which refers to a set of English words that can be translated into a private key) is like your banking PIN. It's probably not a good idea to share your PIN in real life either, so **DO NOT** share your `private key` with anyone![^1]
 
-> **tldr;** run `python create_account.py` in this directory and it should generate a `.env` file with your address and secret. **DO NOT** share your secret with anyone. 
+If you run `python create_account.py`, it will automatically generate your address and secret in a private `.env` file. Do not share or upload this file anywhere (by default, `.env` is listed in this repo's `.gitignore`). We will also use this file later to put our API keys.
+
+> **tl;dr** run `python create_account.py` in this directory and it should generate a `.env` file with your address and secret. **DO NOT** share your secret with anyone. 
 
 ## Fund your address
 For TestNet, we have a bank/faucet that gives you free Algos to test out your program. Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. The funds may take ~10 seconds to settle, but you can check out your funds on the blockchain using [AlgoExplorer](https://testnet.algoexplorer.io/). Enter your `address` in the search bar and confirm that your balances are set to 10. 
 ![algoexplorer screenshot](img/algoexplorer.png)
 
-> **tldr;** Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. 
+> **tl;dr** Go to the [faucet](https://bank.testnet.algorand.network/), enter your `address` and get some free money. 
 
 ## Create a Purestake API-Key and save it to your `.env`
 We are going to use an external API to make requests to the blockchain. Sign up for a [free Purestake account](https://developer.purestake.io/). When you log on, you should see your API key (where the greyed out box is in the screenshot below). 
+
 ![purestake screenshot](img/purestake-api.png)
+
 Don't expose that to the world either - write it down in your `.env` file in the `PURESTAKE_KEY` field. 
+
 ![env file screenshot](img/env-file.png)
 
 ## Upload your beautiful image using NFT.storage
@@ -44,9 +51,10 @@ Copy the CID from the site and note it down somewhere as we will use it in the n
 ## Customize your coin!
 Open `create_nft.py` with your favorite editor, navigate to the top where it says `# Configurable parameters`, and customize your asset by changing the `TOTAL_SUPPLY` (1 means NFT, more than 1 is a custom token), `YOUR_UNIT_NAME`, `YOUR_ASSET_NAME`, and `YOUR_URL`. When entering your URL, the convention is to put the CID prefixed by `ipfs://` [^3]. When you're done, save your editor and run `python3 create_nft.py`. It should take 5~10 seconds to confirm and finalize your transaction on the blockchain [^4]. When the transaction goes through, the Python script should output a link to your new asset! e.g. `Go to Algoexplorer to look at your beautiful asset: https://testnet.algoexplorer.io/asset/your-asset-here`
 
-> **tldr;** Edit `create_nft.py` with your token params and run `python3 create_nft.py`
 
 You should be able to see your new coin/nft on the blockchain! You can view asset information on Algoexplorer by clicking `Technical Information` and then `Creation Tx`, which should show you details about your shiny coin. You can access an `ipfs` url anytime by copying the CID to the end of `https://ipfs.io/ipfs/`, i.e. `https://ipfs.io/ipfs/YOUR_CID_HERE`. Here's a [dummy example](https://ipfs.io/ipfs/bafkreiey5jxe6ilpf62lnh77tm5ejbbmhbugzjuf6p2v3remlu73ced34q). 
+
+> **tl;dr** Edit `create_nft.py` with your token params and run `python3 create_nft.py`. It should generate two links for you to look at your shiny asset.
 
 ## Additional Resources
 * [JavaScript tutorial using Pinata IPFS](https://developer.algorand.org/solutions/minting-nfts-on-algorand-using-ipfs/)
