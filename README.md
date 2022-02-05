@@ -11,8 +11,8 @@ Let's make a simple NFT/memecoin on the Algorand TestNet! We'll use the [Puresta
 ## Clone this repo 
 Open up your terminal and paste the following commands:
 ```
-git clone [this-repo-link]
-cd [this repo]
+git clone https://github.com/algochoi/simple-nft-tutorial.git
+cd simple-nft-tutorial
 python -m venv .venv # optional
 source .venv/bin/activate # optional
 pip install -r requirements.txt
